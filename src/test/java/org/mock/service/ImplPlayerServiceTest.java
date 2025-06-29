@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mock.DataProvider;
 import org.mock.persistence.entity.Player;
 import org.mock.persistence.repository.ImplPlayerRepository;
+import org.mock.persistence.repository.PlayerRepository;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -47,7 +48,7 @@ public class ImplPlayerServiceTest {
     // Forma 3
     // -> Usando @ExtendWith(MockitoExtension.class)
     @Mock
-    private ImplPlayerRepository playerRepository; // Usar implementaciones, no interface
+    private PlayerRepository playerRepository; // Usar interface
 
     @InjectMocks
     private ImplPlayerService playerService;
@@ -64,9 +65,9 @@ public class ImplPlayerServiceTest {
         // Then
         assertNotNull(result);
         assertFalse(result.isEmpty());
-        assertEquals(playerList.getFirst().getName(), result.getFirst().getName());
-        assertEquals(playerList.getFirst().getTeam(), result.getFirst().getTeam());
-        assertEquals(playerList.getFirst().getPosition(), result.getFirst().getPosition());
+        assertEquals(playerList.get(0).getName(), result.get(0).getName());
+        assertEquals(playerList.get(0).getTeam(), result.get(0).getTeam());
+        assertEquals(playerList.get(0).getPosition(), result.get(0).getPosition());
     }
 
     @Test
