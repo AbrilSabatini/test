@@ -1,12 +1,19 @@
 package org.mock.persistence.repository;
 
 import org.mock.persistence.entity.Player;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class ImplPlayerRepository implements PlayerRepository {
-    private List<Player> playerDtabase = new ArrayList<>();
+    private List<Player> playerDtabase = new ArrayList<>(List.of(
+            new Player(1L, "Lionel Messi", "Inter Miami", "Delantero"),
+            new Player(2L, "Cristiano Ronaldo", "Al Nassr", "Delantero"),
+            new Player(3L, "Neymar Jr.", "Paris Saint-Germain", "Delantero"),
+            new Player(4L, "Kylian Mbappé", "Paris Saint-Germain", "Delantero")
+    ));
 
     @Override
     public List<Player> findAll() {

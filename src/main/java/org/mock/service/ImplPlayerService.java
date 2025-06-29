@@ -2,9 +2,11 @@ package org.mock.service;
 
 import org.mock.persistence.entity.Player;
 import org.mock.persistence.repository.PlayerRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ImplPlayerService implements PlayerService {
     private PlayerRepository playerRepository;
 
